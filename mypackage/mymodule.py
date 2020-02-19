@@ -75,10 +75,8 @@ stop_words_dict = {
 def dictionary_of_metrics(items):
     """
     Summary:Calculates the mean,median,standard deviation,variance,minumum value and maximum value
-    
     Args:
         items(list):list object containing numerical values.
-    
     Returns:
         dictionary: mean,median,standsrd deviation,variance,minumun value, and maximum value.
         
@@ -113,11 +111,8 @@ def five_num_summary(items):
 
     '''
     Summary: five number summary of each of the respective proviences Electricification
-    
     Args: list of the Electricification by province (EBP) per year items(string) = column header associated to the respective provience 
-    
     Returns:creates a dictionairy of a five number summary ('25%': 'q1','50%':'median','75%':'q3')
-    
     Egs:
          five_num_summary(gauteng) == {
                                         'max': 39660.0,
@@ -141,11 +136,8 @@ def date_parser(dates):
 
     '''
     Summary: The function takes a list of tweet dates times strings and changes the format as stated below
-    
     Args:  list is formatted as 'yyyy-mm-dd hh:mm:ss'. arg type (string) dates 
-    
     Return: a list of strings where each element in the list is returned as a list that contains only the date in the 'yyyy-mm-dd' format.
-    
     Egs: date_parser(dates[:3]) == ['2019-11-29', '2019-11-29', '2019-11-29']
     
     """
@@ -158,25 +150,18 @@ def extract_municipality_hashtags(df):
 
     '''    
     Summary: The functions extracts the hashtags from the tweets in the twitter dataframe and creates a new column with the hashtags from the corresponding tweets in list form
-    
     Args: The twitter dataframe type(DataFrame)
-    
     Return: a new twitter dataframe with a hashtags columns listing the hashtages of the correspeonding tweets 
-    
     Egs: see note book for more comprehesive look 
-    
     Tweeet: column
      value:   '#ESKOMFREESTATE #MEDIASTATEMENT : ESKOM SUSPENDS PLANNED ELECTRICITY SUPPLY INTERRUPTIONS TO \nMANGAUNG METROPOLITAN
     hashtag: column
      value:   [#ESKOMFREESTATE, #MEDIASTATEMENT] 
-    
-
     '''
    
     for city_key in mun_dict.keys():
         
         df.loc[df['Tweets'].str.contains(pat = city_key),'municipality'] = mun_dict[city_key]
-        
         df.loc[df['Tweets'].str.contains(pat = '#'),'hashtags'] = list(pd.Series(df['Tweets'].str.extractall('(#w+)').unstack().values.tolist()).apply(lambda x :
                                                                                                                                                       [y.lower() for y in x if str(y) != 'nan']))
     return df
@@ -187,9 +172,7 @@ def number_of_tweets_per_day(df):
 
     '''
     Summary: This function counts the number of tweets per day from the twitter dataframe 
-    
     Args: The input is a dataframe  (twitter dataframe)
-    
     Return: It returns a new df with a date index labled dates and a column of the number of tweets per date
     
     Egs:
@@ -219,9 +202,7 @@ def word_splitter(df):
 
     '''  
     Summary: this function takes (dataframe) the twitter dataframe specfically the tweets column and splits the tweets into a list of words 
-    
     Args:  a dataframe in this case the twitter df 
-    
     Return: new column added to the orginal dataframe with a list of individual words sperated where seperated by a spaces
     
     Egs: See notebook 
@@ -237,18 +218,16 @@ def word_splitter(df):
 def stop_words_remover(df):
     """
     Summary:A function which removes english stop words from a tweet.
-    
-    Args:
+     Args:
         df(dataframe):A dataframe in this case the twitter df 
-    
-    Returns:
+     Returns:
         df:New column added to the orginal dataframe with a list of words without stop words
         
     Examples:
         See notebook
     """                            
     df['Without Stop Words']= df['Tweets'].str.lower().str.split() #Tokenization as in func 6
-    
+    #Repopulating the 'Without Stop Words' column using the apply() function and lamba
     df['Without Stop Words']= df['Without Stop Words'].apply(lambda x : [i for i in x if i not in stop_words_dict['stopwords']])
     
     return df
