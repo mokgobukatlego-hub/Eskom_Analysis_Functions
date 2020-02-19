@@ -1,11 +1,8 @@
 # imports of packages to be used in functions
- 
 import pandas as pd
 import numpy as np
 
 # Data loading and preprocessing. Electricification by province (EBP) data
-
-
 ebp_df = pd.read_csv('https://raw.githubusercontent.com/Explore-AI/Public-Data/master/Data/electrification_by_province.csv')
 
 for col, row in ebp_df.iloc[:,1:].iteritems():
