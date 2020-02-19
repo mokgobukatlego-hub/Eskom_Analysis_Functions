@@ -74,7 +74,7 @@ stop_words_dict = {
 ### START FUNCTION ONE 
 def dictionary_of_metrics(items):
     """
-    Calculates the mean,median,standard deviation,variance,minumum value and maximum value
+    Summary:Calculates the mean,median,standard deviation,variance,minumum value and maximum value
     
     Args:
         items(list):list object containing numerical values.
@@ -112,11 +112,11 @@ def dictionary_of_metrics(items):
 def five_num_summary(items):
 
     '''
-    summary: five number summary of each of the respective proviences Electricification
+    Summary: five number summary of each of the respective proviences Electricification
     
     Args: list of the Electricification by province (EBP) per year items(string) = column header associated to the respective provience 
     
-    returns:creates a dictionairy of a five number summary ('25%': 'q1','50%':'median','75%':'q3')
+    Returns:creates a dictionairy of a five number summary ('25%': 'q1','50%':'median','75%':'q3')
     
     Egs:
          five_num_summary(gauteng) == {
@@ -140,11 +140,11 @@ def five_num_summary(items):
 def date_parser(dates):
 
     '''
-    summary: The function takes a list of tweet dates times strings and changes the format as stated below
+    Summary: The function takes a list of tweet dates times strings and changes the format as stated below
     
-    args:  list is formatted as 'yyyy-mm-dd hh:mm:ss'. arg type (string) dates 
+    Args:  list is formatted as 'yyyy-mm-dd hh:mm:ss'. arg type (string) dates 
     
-    return: a list of strings where each element in the list is returned as a list that contains only the date in the 'yyyy-mm-dd' format.
+    Return: a list of strings where each element in the list is returned as a list that contains only the date in the 'yyyy-mm-dd' format.
     
     Egs: date_parser(dates[:3]) == ['2019-11-29', '2019-11-29', '2019-11-29']
     
@@ -157,13 +157,13 @@ def date_parser(dates):
 def extract_municipality_hashtags(df):
 
     '''    
-    summary: The functions extracts the hashtags from the tweets in the twitter dataframe and creates a new column with the hashtags from the corresponding tweets in list form
+    Summary: The functions extracts the hashtags from the tweets in the twitter dataframe and creates a new column with the hashtags from the corresponding tweets in list form
     
     Args: The twitter dataframe type(DataFrame)
     
-    return: a new twitter dataframe with a hashtags columns listing the hashtages of the correspeonding tweets 
+    Return: a new twitter dataframe with a hashtags columns listing the hashtages of the correspeonding tweets 
     
-    egs: see note book for more comprehesive look 
+    Egs: see note book for more comprehesive look 
     
     Tweeet: column
      value:   '#ESKOMFREESTATE #MEDIASTATEMENT : ESKOM SUSPENDS PLANNED ELECTRICITY SUPPLY INTERRUPTIONS TO \nMANGAUNG METROPOLITAN
@@ -186,11 +186,11 @@ def extract_municipality_hashtags(df):
 def number_of_tweets_per_day(df):
 
     '''
-    summary: This function counts the number of tweets per day from the twitter dataframe 
+    Summary: This function counts the number of tweets per day from the twitter dataframe 
     
     Args: The input is a dataframe  (twitter dataframe)
     
-    return: It returns a new df with a date index labled dates and a column of the number of tweets per date
+    Return: It returns a new df with a date index labled dates and a column of the number of tweets per date
     
     Egs:
     	                  Tweets
@@ -218,7 +218,7 @@ def number_of_tweets_per_day(df):
 def word_splitter(df):
 
     '''  
-    summary: this function takes (dataframe) the twitter dataframe specfically the tweets column and splits the tweets into a list of words 
+    Summary: this function takes (dataframe) the twitter dataframe specfically the tweets column and splits the tweets into a list of words 
     
     Args:  a dataframe in this case the twitter df 
     
