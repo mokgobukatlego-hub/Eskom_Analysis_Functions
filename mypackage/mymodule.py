@@ -235,16 +235,18 @@ def word_splitter(df):
 
 ### START FUNCTION SEVEN
 def stop_words_remover(df):
-
-    ''' Removes english stop words from a tweet
-        Takes a pandas dataframe as input
-        Tokenise the sentences according to the definition in function 6
-        Remove all stop words in the tokenised list
-        Stopwords are defined in the stop_words_dict variable defined at the top
-        Resulting tokenised list is placed in a column named "Without Stop Words"
-        Modify the input dataframe
-        Return the modified dataframe
-    '''
+    """
+    Summary:A function which removes english stop words from a tweet.
+    
+    Args:
+        df(dataframe):A dataframe in this case the twitter df 
+    
+    Returns:
+        df:New column added to the orginal dataframe with a list of words without stop words
+        
+    Examples:
+        See notebook
+    """                            
     df['Without Stop Words']= df['Tweets'].str.lower().str.split() #Tokenization as in func 6
     
     df['Without Stop Words']= df['Without Stop Words'].apply(lambda x : [i for i in x if i not in stop_words_dict['stopwords']])
