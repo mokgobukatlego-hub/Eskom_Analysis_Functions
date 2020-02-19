@@ -1,3 +1,3 @@
 from . import mymodule
-'''This function is invalid.
+'''from the current working directory we're importing mymodule
 '''
